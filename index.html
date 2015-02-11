@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<title>Haulea</title>
+	<link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+	<style>
+	body {
+		margin:0;
+		padding:0;
+		font-family:'Lato',sans-serif;
+		min-width: 700px;
+	}
+	html {
+		margin:0;
+		padding:0;
+		font-family:'Lato',sans-serif;
+	}
+
+		.headers {
+			width: 100px;
+			display: inline-block;
+			background-color:#94D235;
+			color:white;
+			text-align:center;
+			padding:10px;
+			border-width: 0px;
+			margin:0px;
+			margin-right: 20px;
+			margin-left: 20px;
+		}
+		#container1 {
+			padding: 0px;
+			ackground-color: #eee;
+			margin-top: 0px;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: center;
+			height: 80px;
+			margin-bottom: -90px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container1">
+	<div id="header0" class="headers">Home</div>
+	<div id="header1" class="headers">About</div>
+	<div id="header2" class="headers">Portfolio</div>
+	<div id="header3" class="headers">Contact</div>
+	</div>
+	<div style="background-color:#eee;height:50px;width:100%;"></div>
+	<div id="page1" style="background-color:#eee;height:250px;width:86%;margin-top:40px;margin-left:7%;text-align:center;color:#555">
+		<h1 style="padding-top:20px;">Welcome</h1>
+		<p>Welcome to the offical Haulea website.</p>
+	</div>
+<script>
+	var scroll = 0;
+	var scrollTarget = 0;
+	var headerStatus = [false, false, false, false];
+	var headerHeight = [20, 20, 20, 20];
+	var headerVelocity = [0,0,0,0];
+	function updateHeight(num) {
+		var header = document.getElementById('header'+num);
+		header.onmouseover = function() {headerStatus[num] = true;}
+		header.onmouseout  = function() {headerStatus[num] = false;}
+		if (headerStatus[num]) {
+			headerVelocity[num]
+			headerHeight[num] += (30-headerHeight[num])*0.3;
+		}else{
+			headerHeight[num] += (20-headerHeight[num])*0.3;
+		}
+		header.style.height = headerHeight[num] + 'px';
+	}
+	function update(){
+		updateHeight(0);
+		updateHeight(1);
+		updateHeight(2);
+		updateHeight(3);
+		document.getElementById('page1').innerHTML = scrollTarget;
+	}
+
+	setInterval(function(){
+		update();
+	}, 1000/60)
+	</script>
+</body>
+</html>
